@@ -2,7 +2,9 @@
 title: "Reproducible Research: Peer Assessment 1"
 author: "Roman Prajapati"
 date: "January 10, 2016"
-output: html_document
+output: 
+  html_document:
+    keep_md: true
 ---
 
 
