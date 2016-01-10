@@ -10,7 +10,7 @@ January 10, 2016
 library(ggplot2)
 library(plyr)
 ```
-##Loading and Preprocesssing the data
+##Loading and Preprocesssing the data(1. Code for reading in the dataset and/or processing the data)
 
 ```r
 #Loading and preprocessing the data -- load csv file and transforming into suitable format
@@ -21,12 +21,14 @@ activity<-read.csv("activity.csv",colClasses=c("integer","Date","integer"))
 #Steps taken per day
 stepsperday<-ddply(activity, c("date"),summarise,totalsteps=sum(steps,na.rm=TRUE))
 ```
+#2. Mean and median number of steps taken each day
 
 ```r
 #Calculate  the mean and median of the total number of steps taken per day              
 activity_mean<- mean(stepsperday$totalsteps, na.rm=TRUE)
 activity_median <- median(stepsperday$totalsteps)
 ```
+#3. Histogram of the total number of steps taken each day
 
 ```r
 #histogram of total steps taken each day
@@ -48,6 +50,7 @@ print(stepshist)
 #Steps per 5 minute
 stepsper5min<-ddply(activity, c("interval"),summarise,meansteps =mean(steps,na.rm=TRUE))
 ```
+#4. Time series plot of the average number of steps taken
 
 ```r
 #time Series Plot                   
@@ -59,6 +62,7 @@ print(activity_5min)
 ```
 
 ![](figure/unnamed-chunk-7-1.png)\
+#5. The 5-minute interval that, on average, contains the maximum number of steps
 
 ```r
 #Interval that contains maximum number of steps
@@ -70,6 +74,7 @@ max_interval<- stepsper5min[which(stepsper5min$meansteps==max(stepsper5min$means
 #incomplete records
 total_rows_with_NA<- nrow(activity)-sum(complete.cases(activity))
 ```
+#6. Code to describe and show a strategy for imputing missing data
 
 ```r
 #Strategy for filling in all missing values
@@ -97,6 +102,7 @@ for(n in 1:nrow(activity)){
   }
 }
 ```
+#7. Histogram of the total number of steps taken each day after missing values are imputed
 
 ```r
 #histogram of the total number of steps taken each day
@@ -152,6 +158,7 @@ stepsperinterval.weekdaysplit<-ddply(activity_guessNA, c("interval","weekday"),s
                     meansteps = mean(steps,na.rm=TRUE)
 )
 ```
+#8. Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends
 
 ```r
 #Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute #interval (x-axis) and the average number of steps taken, averaged across all weekday days #or weekend days (y-axis).
