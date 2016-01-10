@@ -41,7 +41,7 @@ print(stepshist)
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)\
+![](figure/unnamed-chunk-5-1.png)\
 ##Average daily actiity pattern
 
 ```r
@@ -58,7 +58,7 @@ activity_5min<-ggplot(stepsper5min,aes(x=interval,y=meansteps))+geom_line()+
 print(activity_5min)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)\
+![](figure/unnamed-chunk-7-1.png)\
 
 ```r
 #Interval that contains maximum number of steps
@@ -118,7 +118,7 @@ print(hist_perday)
 ## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)\
+![](figure/unnamed-chunk-11-1.png)\
 ##New mean and median
 
 ```r
@@ -166,4 +166,4 @@ weekdayplot<-ggplot(stepsperinterval.weekdaysplit,aes(x=interval,y=meansteps))+
 print(weekdayplot)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)\
+![](figure/unnamed-chunk-14-1.png)\
